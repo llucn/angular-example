@@ -1,0 +1,17 @@
+<h1>User Profile</h1>
+<p>This is the user profile page!</p>
+<p>Name: {{ name() }}</p>
+<p>Name Length: {{ length() }}</p>
+<p>
+  <input type="text" [ngModel]="name()" (ngModelChange)="nameChanged($event)">
+</p>
+<p><button (click)="changeName($event)">Change Name</button></p>
+@if (name() === 'Code') {
+  <p>name is Code</p>
+}
+<p>Favorate</p>
+<ul>
+  @for (item of favorate(); track $index) {
+    <li>{{ item }}</li>
+  }
+</ul>
