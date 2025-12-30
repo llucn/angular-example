@@ -1,0 +1,15 @@
+<h1>Upload File</h1>
+<div class="form-group">
+  <label for="file">Choose File</label>
+  <input type="file"
+    id="file"
+    (change)="onFileSelected($event)"
+  />
+
+  <div class="progress-container">
+    <label for="progress">Uploading: {{ uploadProgress }}%</label>
+    <progress id="progress" [value]="uploadProgress" max="100"></progress>
+    <span class="is-uploading">{{ isUploading }}</span>
+    <span class="upload-progress">{{ uploadProgress }}%</span>
+  </div>
+</div>

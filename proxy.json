@@ -1,0 +1,14 @@
+{
+  "/hello": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/upload": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/upload-simple": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }
+}
