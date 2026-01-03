@@ -1,15 +1,39 @@
-<h1>Upload File</h1>
+<h1>Upload Files</h1>
 <div class="form-group">
-  <label for="file">Choose File</label>
   <input type="file"
     id="file"
+    class="file-upload"
+    #fileUpload
+    [accept]="requiredFileType"
+    multiple
     (change)="onFileSelected($event)"
   />
-
+  <button class="upload-btn"
+    (click)="fileUpload.click()"
+  >
+    Choose File(s)
+  </button>
   <div class="progress-container">
-    <label for="progress">Uploading: {{ uploadProgress }}%</label>
-    <progress id="progress" [value]="uploadProgress" max="100"></progress>
-    <span class="is-uploading">{{ isUploading }}</span>
-    <span class="upload-progress">{{ uploadProgress }}%</span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">File Name</th>
+          <th scope="col">Upload Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ fileName }}</td>
+          <td>
+            <progress id="progress" [value]="uploadProgress" max="100"></progress>
+            <span class="progress">{{ uploadProgress }}%</span>
+          </td>
+          <td>
+            <button class="cancel-btn" (click)="cancelUpload()" [disabled]="!isUploading">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
