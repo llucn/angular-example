@@ -23,14 +23,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{{ fileName }}</td>
+        <tr *ngFor="let item of fileModelList">
+          <td>{{ item.file.name }}</td>
           <td>
-            <progress id="progress" [value]="uploadProgress" max="100"></progress>
-            <span class="progress">{{ uploadProgress }}%</span>
+            <progress id="progress" [value]="item.progressCount" max="100"></progress>
+            <span class="progress">{{ item.isUploading }}%</span>
           </td>
           <td>
-            <button class="cancel-btn" (click)="cancelUpload()" [disabled]="!isUploading">Cancel</button>
+            <button class="cancel-btn" (click)="cancelUpload(item)" [disabled]="!item.isUploading">Cancel</button>
           </td>
         </tr>
       </tbody>
