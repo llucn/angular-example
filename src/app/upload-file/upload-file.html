@@ -26,8 +26,16 @@
         <tr *ngFor="let item of fileModelList">
           <td>{{ item.file.name }}</td>
           <td>
-            <progress id="progress" [value]="item.progressCount" max="100"></progress>
-            <span class="progress">{{ item.isUploading }}%</span>
+            <ng-container *ngIf="item.progressCount > 0">
+              <progress id="progress" [value]="item.progressCount" max="100"></progress>
+              <span class="progress">{{ item.progressCount }}%</span>
+            </ng-container>
+            <ng-container *ngIf="item.isSucess">
+              <span class="success-msg">Upload Successful!</span>
+            </ng-container>
+            <ng-container *ngIf="item.isError">
+              <span class="error-msg">{{ item.errorMessage }}</span>
+            </ng-container>
           </td>
           <td>
             <button class="cancel-btn" (click)="cancelUpload(item)" [disabled]="!item.isUploading">Cancel</button>
